@@ -1,0 +1,12 @@
+FROM node:20.16.0-alpine3.20
+RUN addgroup neon && adduser -S -G neon neon
+WORKDIR /app
+RUN mkdir data
+COPY package.json .
+RUN npm install
+COPY .  .
+ENV API_URL=https://neonlrean.ir
+EXPOSE 3000
+CMD ["npm" , "start"]
+
+
